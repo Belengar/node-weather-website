@@ -7,6 +7,10 @@ const forecast = require('./utils/forecast.js')
 const hbs = require('hbs')
 
 const app = express()
+//the following line is to get the port number from heroku 
+// and use a default if it is not running in heroku
+const port = process.env.PORT || 3000
+
 const publicDirectoryPath = path.join(__dirname,'../public')
 // with the next line we can change the path where express 
 // looks for the hbs files (views is the default and 
@@ -129,6 +133,6 @@ app.get('*', (req, res) =>{
 //app.com/about
 // ...
 
-app.listen(3000, ()=>{
-    console.log('Server is up on port 3000.')
+app.listen(port, ()=>{
+    console.log('Server is up on port '+ port +'.')
 })
